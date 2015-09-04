@@ -22,3 +22,15 @@ _testmain.go
 *.exe
 *.test
 *.prof
+
+# gopm
+
+.DS_Store
+*.exe
+*.exe~
+repos/
+vendor/
+.vendor/
+.idea/
+gopm.sublime-project
+gopm.sublime-workspace
