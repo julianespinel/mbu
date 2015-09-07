@@ -1,6 +1,0 @@
-[target]
-path = mbu 
-
-[deps]
-github.com/gin-gonic/gin = tag:v1.0rc1
-github.com/shirou/gopsutil = tag:1.0.0
