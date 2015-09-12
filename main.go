@@ -76,22 +76,22 @@ func main() {
 
 	router.GET("/all", func(context *gin.Context) {
 		allStats := getAllStats(getCPUStat(), getRAMStat(), getDiskStat())
-		context.JSON(200, allStats)
+		context.IndentedJSON(200, allStats)
 	})
 
 	router.GET("/cpu", func(context *gin.Context) {
 		cpu := getCPUStat()
-		context.JSON(200, cpu)
+		context.IndentedJSON(200, cpu)
 	})
 
 	router.GET("/ram", func(context *gin.Context) {
 		ram := getRAMStat()
-		context.JSON(200, ram)
+		context.IndentedJSON(200, ram)
 	})
 
 	router.GET("/disk", func(context *gin.Context) {
 		disk := getDiskStat()
-		context.JSON(200, disk)
+		context.IndentedJSON(200, disk)
 	})
 
 	router.Run(":8080") // listen and serve on 0.0.0.0:8080
