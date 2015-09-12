@@ -21,6 +21,51 @@ func getAverage(array []float32) float32 {
 	return (accumulator/size)
 }
 
+func buildCPUMultipleStat(usagePercentagePerCore []float32) stats.MultipleStat {
+
+	averageUsagePercentage := getAverage(usagePercentagePerCore)
+	return stats.MultipleStat{ averageUsagePercentage, usagePercentagePerCore }
+}
+
+func buildRamStat(vm mem.VirtualMemoryStat) stats.SingleStat {
+	gb := float32(1000000000)
+	totalGB := float32(vm.Total) / gb
+	availableGB := float32(vm.Available) / gb
+	usedGB := (totalGB - availableGB)
+	usagePercentage := float32(vm.UsedPercent)
+	return stats.SingleStat{ totalGB, usedGB, availableGB, usagePercentage }
+}
+
+func buildDiskStat(diskUsage disk.DiskUsageStat) stats.SingleStat {
+	gb := float32(1000000000)
+	totalGB := float32(diskUsage.Total) / gb
+	availableGB := float32(diskUsage.Free) / gb
+	usedGB := float32(diskUsage.Used) / gb
+	usagePercentage := float32(diskUsage.UsedPercent)
+	return stats.SingleStat{ totalGB, usedGB, availableGB, usagePercentage }
+}
+
+func getCPUStat() stats.MultipleStat {
+	perCpu := true
+	usagePercentagePerCore, _ := cpu.CPUPercent(time.Second, perCpu)
+	return buildCPUMultipleStat(usagePercentagePerCore)
+}
+
+func getRAMStat() stats.SingleStat {
+	vm, _ := mem.VirtualMemory()
+	return buildRamStat(*vm)
+}
+
+func getDiskStat() stats.SingleStat {
+	path := "/"
+	diskUsage, _ := disk.DiskUsage(path)
+	return buildDiskStat(*diskUsage)
+}
+
+func getAllStats(cpu stats.MultipleStat, ram stats.SingleStat, disk stats.SingleStat) stats.AllStat {
+	return stats.AllStat{ cpu, ram, disk }
+}
+
 func main() {
 
 	router := gin.Default()
@@ -29,37 +74,23 @@ func main() {
 		context.String(200, "pong")
 	})
 
-	router.GET("/cpu", func(context *gin.Context) {
-		perCpu := true
-		cpuPercentArray, _ := cpu.CPUPercent(time.Second, perCpu)
+	router.GET("/all", func(context *gin.Context) {
+		allStats := getAllStats(getCPUStat(), getRAMStat(), getDiskStat())
+		context.JSON(200, allStats)
+	})
 
-		averageUsagePercentage := getAverage(cpuPercentArray);
-		cpu := stats.MultipleStat{ averageUsagePercentage, cpuPercentArray }
+	router.GET("/cpu", func(context *gin.Context) {
+		cpu := getCPUStat()
 		context.JSON(200, cpu)
 	})
 
 	router.GET("/ram", func(context *gin.Context) {
-		vm, _ := mem.VirtualMemory()
-
-		gb := float32(1000000000)
-		totalGB := float32(vm.Total) / gb
-		availableGB := float32(vm.Available) / gb
-		usedGB := (totalGB - availableGB)
-		usagePercentage := float32(vm.UsedPercent)
-		ram := stats.SingleStat{ totalGB, usedGB, availableGB, usagePercentage }
+		ram := getRAMStat()
 		context.JSON(200, ram)
 	})
 
 	router.GET("/disk", func(context *gin.Context) {
-		path := "/"
-		diskUsage, _ := disk.DiskUsage(path)
-
-		gb := float32(1000000000)
-		totalGB := float32(diskUsage.Total) / gb
-		availableGB := float32(diskUsage.Free) / gb
-		usedGB := float32(diskUsage.Used) / gb
-		usagePercentage := float32(diskUsage.UsedPercent)
-		disk := stats.SingleStat{ totalGB, usedGB, availableGB, usagePercentage }
+		disk := getDiskStat()
 		context.JSON(200, disk)
 	})
 
