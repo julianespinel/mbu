@@ -7,25 +7,32 @@ import (
 
 const GB = float32(1000000000)
 
-func getAverage(array []float32) float32 {
+func GetAverage(array []float32) float32 {
 
-	accumulator := float32(0)
+	average := float32(0)
 	size := float32(len(array))
 
-	for _, number := range array {
-		accumulator += number
+	if (size > 0) {
+
+		accumulator := float32(0)
+
+		for _, number := range array {
+			accumulator += number
+		}
+
+		average = (accumulator / size)
 	}
 
-	return (accumulator/size)
+	return average
 }
 
-func buildCPUMultipleStat(usagePercentagePerCore []float32) MultipleStat {
+func BuildCPUMultipleStat(usagePercentagePerCore []float32) MultipleStat {
 
-	averageUsagePercentage := getAverage(usagePercentagePerCore)
+	averageUsagePercentage := GetAverage(usagePercentagePerCore)
 	return MultipleStat{ averageUsagePercentage, usagePercentagePerCore }
 }
 
-func buildRamStat(vm mem.VirtualMemoryStat) SingleStat {
+func BuildRamStat(vm mem.VirtualMemoryStat) SingleStat {
 	totalGB := float32(vm.Total) / GB
 	availableGB := float32(vm.Available) / GB
 	usedGB := (totalGB - availableGB)
@@ -33,7 +40,7 @@ func buildRamStat(vm mem.VirtualMemoryStat) SingleStat {
 	return SingleStat{ totalGB, usedGB, availableGB, usagePercentage }
 }
 
-func buildDiskStat(diskUsage disk.DiskUsageStat) SingleStat {
+func BuildDiskStat(diskUsage disk.DiskUsageStat) SingleStat {
 	totalGB := float32(diskUsage.Total) / GB
 	availableGB := float32(diskUsage.Free) / GB
 	usedGB := float32(diskUsage.Used) / GB
