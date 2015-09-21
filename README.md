@@ -27,7 +27,17 @@ We'll get there soon.
 
 ## Usage
 
-You can access the information provided by MBU using its HTTP API. 
+You can access the information provided by MBU directly from your web browser or from an HTTP client.
+
+You can copy and paste the following lines in your browser to see the information from the host MBU is installed on: 
+
+1. `http://localhost:8080/mbu/admin/ping`
+2. `http://localhost:8080/mbu/api/cpu`
+3. `http://localhost:8080/mbu/api/ram`
+4. `http://localhost:8080/mbu/api/disk`
+5. `http://localhost:8080/mbu/api/all`
+
+For more information about the services offered by MBU please check the [API](https://github.com/julianespinel/mbu#api) section of this readme.
 
 ### Example
 
