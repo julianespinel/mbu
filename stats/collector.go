@@ -10,18 +10,18 @@ import (
 func GetCPUStat() MultipleStat {
 	perCpu := true
 	usagePercentagePerCore, _ := cpu.CPUPercent(400 * time.Millisecond, perCpu)
-	return buildCPUMultipleStat(usagePercentagePerCore)
+	return BuildCPUMultipleStat(usagePercentagePerCore)
 }
 
 func GetRAMStat() SingleStat {
 	vm, _ := mem.VirtualMemory()
-	return buildRamStat(*vm)
+	return BuildRamStat(*vm)
 }
 
 func GetDiskStat() SingleStat {
 	path := "/"
 	diskUsage, _ := disk.DiskUsage(path)
-	return buildDiskStat(*diskUsage)
+	return BuildDiskStat(*diskUsage)
 }
 
 func GetAllStats(cpu MultipleStat, ram SingleStat, disk SingleStat) AllStat {
