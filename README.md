@@ -65,9 +65,9 @@ You can access the information provided by MBU using its HTTP API.
 
 ## API
 
-MBU provides the following 4 services: 
+MBU provides the following 5 services: 
 
-### Ping
+### 1. Ping
 
 Use the ping service to check the health of MBU.
 
@@ -79,7 +79,7 @@ Use the ping service to check the health of MBU.
 
 `pong`
 
-### CPU
+### 2. CPU
 
 Provides CPU usage information.
 
@@ -101,7 +101,7 @@ Provides CPU usage information.
 }
 ```
 
-### RAM
+### 3. RAM
 
 Provides RAM usage information.
 
@@ -120,7 +120,7 @@ Provides RAM usage information.
 }
 ```
 
-### Disk
+### 4. Disk
 
 Provides disk usage information.
 
@@ -139,7 +139,7 @@ Provides disk usage information.
 }
 ```
 
-### All
+### 5. All
 
 Provides CPU, RAM and disk information in one JSON.
 
