@@ -184,3 +184,7 @@ Provides CPU, RAM and disk information in one JSON.
     }
 }
 ```
+
+## License
+
+This project is under the MIT License. See the [LICENSE](https://github.com/julianespinel/mbu/blob/master/LICENSE) file for the full license text.
