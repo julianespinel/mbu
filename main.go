@@ -1,8 +1,12 @@
 package main
 
 import (
+	"fmt"
+	"strconv"
 	"github.com/mbu/stats"
+	"github.com/mbu/config"
 	"github.com/gin-gonic/gin"
+	"github.com/BurntSushi/toml"
 )
 
 func main() {
@@ -40,5 +44,11 @@ func main() {
 		})
 	}
 
-	router.Run(":8080") // listen and serve on 0.0.0.0:8080
+	var config config.Config
+	if _, err := toml.DecodeFile("mbu.toml", &config); err != nil {
+		fmt.Println(err)
+		return
+	}
+
+	router.Run(":" + strconv.Itoa(config.Server.Port)) // listen and serve on 0.0.0.0:port
 }
