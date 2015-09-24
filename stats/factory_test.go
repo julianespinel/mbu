@@ -3,7 +3,7 @@ package stats_test
 import (
 	"math"
 	"testing"
-	"../stats"
+	"github.com/mbu/stats"
 	"github.com/shirou/gopsutil/mem"
 	"github.com/shirou/gopsutil/disk"
 	"github.com/stretchr/testify/assert"
