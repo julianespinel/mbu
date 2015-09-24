@@ -11,10 +11,10 @@ import (
 
 func TestGetAverage_OK(t *testing.T) {
 
-	float32Array := []float32{ 11.904762, 27.5, 5, 2.5, 7.692308, 31.707317, 2.4390242, 7.317073 }
+	float64Array := []float64{ 11.904762, 27.5, 5, 2.5, 7.692308, 31.707317, 2.4390242, 7.317073 }
 
-	expected := float32(12.007560525)
-	actual := stats.GetAverage(float32Array)
+	expected := float64(12.007560525)
+	actual := stats.GetAverage(float64Array)
 	difference := math.Abs(float64(expected - actual))
 
 	if (difference >= 1) {
@@ -24,34 +24,34 @@ func TestGetAverage_OK(t *testing.T) {
 
 func TestGetAverage_NOK_emptyArray(t *testing.T) {
 
-	float32Array := []float32{}
+	float64Array := []float64{}
 
-	expected := float32(0)
-	actual := stats.GetAverage(float32Array)
+	expected := float64(0)
+	actual := stats.GetAverage(float64Array)
 	assert.Equal(t, expected, actual)
 }
 
 func TestBuildCPUMultipleStat_OK(t *testing.T) {
 
-	float32Array := []float32{ 11.904762, 27.5, 5, 2.5, 7.692308, 31.707317, 2.4390242, 7.317073 }
-	cpu := stats.BuildCPUMultipleStat(float32Array)
+	float64Array := []float64{ 11.904762, 27.5, 5, 2.5, 7.692308, 31.707317, 2.4390242, 7.317073 }
+	cpu := stats.BuildCPUMultipleStat(float64Array)
 
 	assert := assert.New(t)
 	assert.NotNil(cpu)
-	assert.Equal(stats.GetAverage(float32Array), cpu.AverageUsagePercentage)
-	assert.Equal(len(float32Array), len(cpu.UsagePercentagePerCore))
+	assert.Equal(stats.GetAverage(float64Array), cpu.AverageUsagePercentage)
+	assert.Equal(len(float64Array), len(cpu.UsagePercentagePerCore))
 }
 
 func TestBuildCPUMultipleStat_NOK_emptyArray(t *testing.T) {
 
-	float32Array := []float32{}
-	cpu := stats.BuildCPUMultipleStat(float32Array)
+	float64Array := []float64{}
+	cpu := stats.BuildCPUMultipleStat(float64Array)
 
 	assert := assert.New(t)
 	assert.NotNil(cpu)
-	assert.Equal(stats.GetAverage(float32Array), cpu.AverageUsagePercentage)
-	assert.Equal(float32(0), cpu.AverageUsagePercentage)
-	assert.Equal(len(float32Array), len(cpu.UsagePercentagePerCore))
+	assert.Equal(stats.GetAverage(float64Array), cpu.AverageUsagePercentage)
+	assert.Equal(float64(0), cpu.AverageUsagePercentage)
+	assert.Equal(len(float64Array), len(cpu.UsagePercentagePerCore))
 	assert.Equal(0, len(cpu.UsagePercentagePerCore))
 }
 
@@ -68,10 +68,10 @@ func TestBuildRamStat_OK(t *testing.T) {
 
 	assert := assert.New(t)
 	assert.NotNil(ram)
-	assert.Equal(float32(total)/stats.GB, ram.TotalGB)
-	assert.Equal(float32(used)/stats.GB, ram.UsedGB)
-	assert.Equal(float32(available)/stats.GB, ram.AvailableGB)
-	assert.Equal(float32(usagePercentage), ram.UsagePercentage)
+	assert.Equal(float64(total)/stats.GB, ram.TotalGB)
+	assert.Equal(float64(used)/stats.GB, ram.UsedGB)
+	assert.Equal(float64(available)/stats.GB, ram.AvailableGB)
+	assert.Equal(float64(usagePercentage), ram.UsagePercentage)
 }
 
 func TestBuildRamStat_NOK_zeroedRAM(t *testing.T) {
@@ -87,10 +87,10 @@ func TestBuildRamStat_NOK_zeroedRAM(t *testing.T) {
 
 	assert := assert.New(t)
 	assert.NotNil(ram)
-	assert.Equal(float32(total)/stats.GB, ram.TotalGB)
-	assert.Equal(float32(used)/stats.GB, ram.UsedGB)
-	assert.Equal(float32(available)/stats.GB, ram.AvailableGB)
-	assert.Equal(float32(usagePercentage), ram.UsagePercentage)
+	assert.Equal(float64(total)/stats.GB, ram.TotalGB)
+	assert.Equal(float64(used)/stats.GB, ram.UsedGB)
+	assert.Equal(float64(available)/stats.GB, ram.AvailableGB)
+	assert.Equal(float64(usagePercentage), ram.UsagePercentage)
 }
 
 func TestBuildDiskStat_OK(t *testing.T) {
@@ -103,15 +103,15 @@ func TestBuildDiskStat_OK(t *testing.T) {
 	zeroInt := uint64(0)
 	zeroFloat := float64(0)
 
-	diskUsage := disk.DiskUsageStat{ stringValue, total, free, used, usagePercentage, zeroInt, zeroInt, zeroInt, zeroFloat }
+	diskUsage := disk.DiskUsageStat{ stringValue, stringValue, total, free, used, usagePercentage, zeroInt, zeroInt, zeroInt, zeroFloat }
 	disk := stats.BuildDiskStat(diskUsage)
 
 	assert := assert.New(t)
 	assert.NotNil(disk)
-	assert.Equal(float32(total)/stats.GB, disk.TotalGB)
-	assert.Equal(float32(used)/stats.GB, disk.UsedGB)
-	assert.Equal(float32(free)/stats.GB, disk.AvailableGB)
-	assert.Equal(float32(usagePercentage), disk.UsagePercentage)
+	assert.Equal(float64(total)/stats.GB, disk.TotalGB)
+	assert.Equal(float64(used)/stats.GB, disk.UsedGB)
+	assert.Equal(float64(free)/stats.GB, disk.AvailableGB)
+	assert.Equal(float64(usagePercentage), disk.UsagePercentage)
 }
 
 func TestBuildDiskStat_NOK_zeroedDisk(t *testing.T) {
@@ -124,13 +124,13 @@ func TestBuildDiskStat_NOK_zeroedDisk(t *testing.T) {
 	zeroInt := uint64(0)
 	zeroFloat := float64(0)
 
-	diskUsage := disk.DiskUsageStat{ stringValue, total, free, used, usagePercentage, zeroInt, zeroInt, zeroInt, zeroFloat }
+	diskUsage := disk.DiskUsageStat{ stringValue, stringValue, total, free, used, usagePercentage, zeroInt, zeroInt, zeroInt, zeroFloat }
 	disk := stats.BuildDiskStat(diskUsage)
 
 	assert := assert.New(t)
 	assert.NotNil(disk)
-	assert.Equal(float32(total)/stats.GB, disk.TotalGB)
-	assert.Equal(float32(used)/stats.GB, disk.UsedGB)
-	assert.Equal(float32(free)/stats.GB, disk.AvailableGB)
-	assert.Equal(float32(usagePercentage), disk.UsagePercentage)
+	assert.Equal(float64(total)/stats.GB, disk.TotalGB)
+	assert.Equal(float64(used)/stats.GB, disk.UsedGB)
+	assert.Equal(float64(free)/stats.GB, disk.AvailableGB)
+	assert.Equal(float64(usagePercentage), disk.UsagePercentage)
 }
