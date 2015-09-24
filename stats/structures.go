@@ -1,15 +1,15 @@
 package stats
 
 type SingleStat struct {
-	TotalGB         float32 `json:"totalGB"`
-	UsedGB          float32 `json:"usedGB"`
-	AvailableGB     float32 `json:"availableGB"`
-	UsagePercentage float32 `json:"usagePercentage"`
+	TotalGB         float64 `json:"totalGB"`
+	UsedGB          float64 `json:"usedGB"`
+	AvailableGB     float64 `json:"availableGB"`
+	UsagePercentage float64 `json:"usagePercentage"`
 }
 
 type MultipleStat struct {
-	AverageUsagePercentage float32   `json:"averageUsagePercentage"`
-	UsagePercentagePerCore []float32 `json:"usagePercentagePerCore"`
+	AverageUsagePercentage float64   `json:"averageUsagePercentage"`
+	UsagePercentagePerCore []float64 `json:"usagePercentagePerCore"`
 }
 
 type AllStat struct {
