@@ -1,7 +1,7 @@
 package main
 
 import (
-	"./stats"
+	"github.com/mbu/stats"
 	"github.com/gin-gonic/gin"
 )
 
