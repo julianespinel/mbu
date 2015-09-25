@@ -9,7 +9,7 @@ import (
 
 func TestGetPing_OK(t *testing.T) {
 
-	req, err := http.NewRequest("GET", "http://localhost:8080/mbu/admin/ping", nil)
+	req, err := http.NewRequest("GET", "http://localhost:7007/mbu/admin/ping", nil)
 	res, err := http.DefaultClient.Do(req)
 
 	assert := assert.New(t)
