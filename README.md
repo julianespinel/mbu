@@ -9,6 +9,8 @@ With MBU you can get the following information from the machine it is installed 
 
 ## Installation
 
+MBU uses the port 7007 by default. If you want to change it just change the port number in the file: [mbu.toml](https://github.com/julianespinel/mbu/blob/master/mbu.toml).
+
 ### Linux
 
 Execute these steps in you terminal.
