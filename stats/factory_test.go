@@ -38,6 +38,7 @@ func TestBuildCPUMultipleStat_OK(t *testing.T) {
 
 	assert := assert.New(t)
 	assert.NotNil(cpu)
+	assert.Equal(len(float64Array), cpu.NumberOfCores)
 	assert.Equal(stats.GetAverage(float64Array), cpu.AverageUsagePercentage)
 	assert.Equal(len(float64Array), len(cpu.UsagePercentagePerCore))
 }
@@ -49,6 +50,7 @@ func TestBuildCPUMultipleStat_NOK_emptyArray(t *testing.T) {
 
 	assert := assert.New(t)
 	assert.NotNil(cpu)
+	assert.Equal(len(float64Array), cpu.NumberOfCores)
 	assert.Equal(stats.GetAverage(float64Array), cpu.AverageUsagePercentage)
 	assert.Equal(float64(0), cpu.AverageUsagePercentage)
 	assert.Equal(len(float64Array), len(cpu.UsagePercentagePerCore))
