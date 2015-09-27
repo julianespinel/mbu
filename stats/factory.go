@@ -28,8 +28,9 @@ func GetAverage(array []float64) float64 {
 
 func BuildCPUMultipleStat(usagePercentagePerCore []float64) MultipleStat {
 
+	numberOfCores := len(usagePercentagePerCore)
 	averageUsagePercentage := GetAverage(usagePercentagePerCore)
-	return MultipleStat{ averageUsagePercentage, usagePercentagePerCore }
+	return MultipleStat{ numberOfCores, averageUsagePercentage, usagePercentagePerCore }
 }
 
 func BuildRamStat(vm mem.VirtualMemoryStat) SingleStat {
