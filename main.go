@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
-	"github.com/BurntSushi/toml"
-	"github.com/gin-gonic/gin"
+	"github.com/mbu/Godeps/_workspace/src/github.com/BurntSushi/toml"
+	"github.com/mbu/Godeps/_workspace/src/github.com/gin-gonic/gin"
 	"github.com/mbu/config"
 	"github.com/mbu/stats"
 	"strconv"
