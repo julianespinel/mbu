@@ -52,6 +52,7 @@ For more information about the services offered by MBU please check the [API](ht
 ```json
 {
     "cpu": {
+        "numberOfCores": 4,
         "averageUsagePercentage": 10.801282,
         "usagePercentagePerCore": [
             5,
@@ -103,6 +104,7 @@ Provides CPU usage information.
 
 ```json
 {
+    "numberOfCores": 4,
     "averageUsagePercentage": 13.351047,
     "usagePercentagePerCore": [
         7.692308,
@@ -164,6 +166,7 @@ Provides CPU, RAM and disk information in one JSON.
 ```json
 {
     "cpu": {
+        "numberOfCores": 4,
         "averageUsagePercentage": 10.801282,
         "usagePercentagePerCore": [
             5,
