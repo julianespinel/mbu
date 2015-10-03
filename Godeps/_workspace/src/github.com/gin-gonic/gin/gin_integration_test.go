@@ -10,7 +10,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/stretchr/testify/assert"
+	"github.com/mbu/Godeps/_workspace/src/github.com/stretchr/testify/assert"
 )
 
 func testRequest(t *testing.T, url string) {

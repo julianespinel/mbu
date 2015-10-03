@@ -8,7 +8,7 @@ import (
 	"strconv"
 	"strings"
 
-	common "github.com/shirou/gopsutil/common"
+	common "github.com/mbu/Godeps/_workspace/src/github.com/shirou/gopsutil/common"
 )
 
 var cpu_tick = float64(100)

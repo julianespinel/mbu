@@ -45,8 +45,8 @@
 		},
 		{
 			"ImportPath": "github.com/stretchr/testify/assert",
-			"Comment": "v1.0-42-gb8dc1ce",
-			"Rev": "b8dc1cecf15bdaf1988d9e87aa7cd98d899a06d6"
+			"Comment": "v1.0-45-gbcd32dc",
+			"Rev": "bcd32dcc8b1e09b14f55703dcf891fdd82561143"
 		},
 		{
 			"ImportPath": "golang.org/x/net/context",

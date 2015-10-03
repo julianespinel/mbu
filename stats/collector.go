@@ -1,9 +1,9 @@
 package stats
 
 import (
-	"github.com/shirou/gopsutil/cpu"
-	"github.com/shirou/gopsutil/disk"
-	"github.com/shirou/gopsutil/mem"
+	"github.com/mbu/Godeps/_workspace/src/github.com/shirou/gopsutil/cpu"
+	"github.com/mbu/Godeps/_workspace/src/github.com/shirou/gopsutil/disk"
+	"github.com/mbu/Godeps/_workspace/src/github.com/shirou/gopsutil/mem"
 	"time"
 )
 
