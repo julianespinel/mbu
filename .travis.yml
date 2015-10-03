@@ -9,3 +9,4 @@ env:
 install:
   - go get github.com/tools/godep
   - godep restore
+  - godep save -r ./...
