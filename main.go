@@ -2,11 +2,11 @@ package main
 
 import (
 	"fmt"
-	"strconv"
-	"github.com/mbu/stats"
-	"github.com/mbu/config"
-	"github.com/gin-gonic/gin"
 	"github.com/BurntSushi/toml"
+	"github.com/gin-gonic/gin"
+	"github.com/julianespinel/mbu/config"
+	"github.com/julianespinel/mbu/stats"
+	"strconv"
 )
 
 func main() {

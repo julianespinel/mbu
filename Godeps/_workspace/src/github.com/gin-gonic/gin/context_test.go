@@ -14,7 +14,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/manucorporat/sse"
+	"github.com/mbu/Godeps/_workspace/src/github.com/manucorporat/sse"
 	"github.com/stretchr/testify/assert"
 )
 

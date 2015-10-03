@@ -8,7 +8,7 @@ type SingleStat struct {
 }
 
 type MultipleStat struct {
-	NumberOfCores int `json:"numberOfCores"`
+	NumberOfCores          int       `json:"numberOfCores"`
 	AverageUsagePercentage float64   `json:"averageUsagePercentage"`
 	UsagePercentagePerCore []float64 `json:"usagePercentagePerCore"`
 }

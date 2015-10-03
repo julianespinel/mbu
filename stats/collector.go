@@ -1,15 +1,15 @@
 package stats
 
 import (
-	"time"
 	"github.com/shirou/gopsutil/cpu"
-	"github.com/shirou/gopsutil/mem"
 	"github.com/shirou/gopsutil/disk"
+	"github.com/shirou/gopsutil/mem"
+	"time"
 )
 
 func GetCPUStat() MultipleStat {
 	perCpu := true
-	usagePercentagePerCore, _ := cpu.CPUPercent(400 * time.Millisecond, perCpu)
+	usagePercentagePerCore, _ := cpu.CPUPercent(400*time.Millisecond, perCpu)
 	return BuildCPUMultipleStat(usagePercentagePerCore)
 }
 
@@ -25,5 +25,5 @@ func GetDiskStat() SingleStat {
 }
 
 func GetAllStats(cpu MultipleStat, ram SingleStat, disk SingleStat) AllStat {
-	return AllStat{ cpu, ram, disk }
+	return AllStat{cpu, ram, disk}
 }
