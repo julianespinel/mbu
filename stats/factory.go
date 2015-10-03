@@ -1,8 +1,8 @@
 package stats
 
 import (
-	"github.com/shirou/gopsutil/mem"
 	"github.com/shirou/gopsutil/disk"
+	"github.com/shirou/gopsutil/mem"
 )
 
 const GB = float64(1000000000)
@@ -12,7 +12,7 @@ func GetAverage(array []float64) float64 {
 	average := float64(0)
 	size := float64(len(array))
 
-	if (size > 0) {
+	if size > 0 {
 
 		accumulator := float64(0)
 
@@ -30,7 +30,7 @@ func BuildCPUMultipleStat(usagePercentagePerCore []float64) MultipleStat {
 
 	numberOfCores := len(usagePercentagePerCore)
 	averageUsagePercentage := GetAverage(usagePercentagePerCore)
-	return MultipleStat{ numberOfCores, averageUsagePercentage, usagePercentagePerCore }
+	return MultipleStat{numberOfCores, averageUsagePercentage, usagePercentagePerCore}
 }
 
 func BuildRamStat(vm mem.VirtualMemoryStat) SingleStat {
@@ -38,7 +38,7 @@ func BuildRamStat(vm mem.VirtualMemoryStat) SingleStat {
 	availableGB := float64(vm.Available) / GB
 	usedGB := (totalGB - availableGB)
 	usagePercentage := float64(vm.UsedPercent)
-	return SingleStat{ totalGB, usedGB, availableGB, usagePercentage }
+	return SingleStat{totalGB, usedGB, availableGB, usagePercentage}
 }
 
 func BuildDiskStat(diskUsage disk.DiskUsageStat) SingleStat {
@@ -46,5 +46,5 @@ func BuildDiskStat(diskUsage disk.DiskUsageStat) SingleStat {
 	availableGB := float64(diskUsage.Free) / GB
 	usedGB := float64(diskUsage.Used) / GB
 	usagePercentage := float64(diskUsage.UsedPercent)
-	return SingleStat{ totalGB, usedGB, availableGB, usagePercentage }
+	return SingleStat{totalGB, usedGB, availableGB, usagePercentage}
 }

@@ -1,10 +1,10 @@
 package main_test
 
 import (
-	"testing"
-	"net/http"
-	"io/ioutil"
 	"github.com/stretchr/testify/assert"
+	"io/ioutil"
+	"net/http"
+	"testing"
 )
 
 func TestGetPing_OK(t *testing.T) {
