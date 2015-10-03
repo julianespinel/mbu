@@ -3,6 +3,11 @@ language: go
 go: 
   - tip
 
-install:
-  - export GOPATH="${TRAVIS_BUILD_DIR}/Godeps/_workspace:$GOPATH"
-  - export PATH="${TRAVIS_BUILD_DIR}/Godeps/_workspace/bin:$PATH"
+before_install:
+  - go get github.com/BurntSushi/toml
+  - go get github.com/gin-gonic/gin
+  - go get github.com/shirou/gopsutil/cpu
+  - go get github.com/shirou/gopsutil/mem
+  - go get github.com/shirou/gopsutil/disk
+  - go get github.com/stretchr/testify/assert
+  - go get github.com/julianespinel/mbu
