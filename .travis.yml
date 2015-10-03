@@ -3,6 +3,9 @@ language: go
 go: 
   - tip
 
+env:
+  - "PATH=/home/travis/gopath/bin:$PATH"
+
 install:
   - go get github.com/tools/godep
   - godep restore
