@@ -1,9 +1,9 @@
 package stats_test
 
 import (
-	"github.com/mbu/Godeps/_workspace/src/github.com/shirou/gopsutil/disk"
-	"github.com/mbu/Godeps/_workspace/src/github.com/shirou/gopsutil/mem"
-	"github.com/mbu/Godeps/_workspace/src/github.com/stretchr/testify/assert"
+	"github.com/shirou/gopsutil/disk"
+	"github.com/shirou/gopsutil/mem"
+	"github.com/stretchr/testify/assert"
 	"github.com/mbu/stats"
 	"math"
 	"testing"
