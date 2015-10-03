@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"github.com/BurntSushi/toml"
 	"github.com/gin-gonic/gin"
-	"github.com/mbu/config"
-	"github.com/mbu/stats"
+	"github.com/julianespinel/mbu/config"
+	"github.com/julianespinel/mbu/stats"
 	"strconv"
 )
 
