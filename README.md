@@ -33,11 +33,11 @@ You can access the information provided by MBU directly from your web browser or
 
 You can copy and paste the following lines in your browser to see the information from the host MBU is installed on: 
 
-1. `http://localhost:8080/mbu/admin/ping`
-2. `http://localhost:8080/mbu/api/cpu`
-3. `http://localhost:8080/mbu/api/ram`
-4. `http://localhost:8080/mbu/api/disk`
-5. `http://localhost:8080/mbu/api/all`
+1. `http://localhost:7007/mbu/admin/ping`
+2. `http://localhost:7007/mbu/api/cpu`
+3. `http://localhost:7007/mbu/api/ram`
+4. `http://localhost:7007/mbu/api/disk`
+5. `http://localhost:7007/mbu/api/all`
 
 For more information about the services offered by MBU please check the [API](https://github.com/julianespinel/mbu#api) section of this readme.
 
@@ -45,7 +45,7 @@ For more information about the services offered by MBU please check the [API](ht
 
 *Request:*
 
-`GET http://localhost:8080/mbu/api/all`
+`GET http://localhost:7007/mbu/api/all`
 
 *Response:*
 
@@ -86,7 +86,7 @@ Use the ping service to check the health of MBU.
 
 *Request:*
 
-`GET http://localhost:8080/mbu/admin/ping`
+`GET http://localhost:7007/mbu/admin/ping`
 
 *Response:*
 
@@ -98,7 +98,7 @@ Provides CPU usage information.
 
 *Request:*
 
-`GET http://localhost:8080/mbu/api/cpu`
+`GET http://localhost:7007/mbu/api/cpu`
 
 *Response:*
 
@@ -121,7 +121,7 @@ Provides RAM usage information.
 
 *Request:*
 
-`GET http://localhost:8080/mbu/api/ram`
+`GET http://localhost:7007/mbu/api/ram`
 
 *Response:*
 
@@ -140,7 +140,7 @@ Provides disk usage information.
 
 *Request:*
 
-`GET http://localhost:8080/mbu/api/disk`
+`GET http://localhost:7007/mbu/api/disk`
 
 *Response:*
 
@@ -159,7 +159,7 @@ Provides CPU, RAM and disk information in one JSON.
 
 *Request:*
 
-`GET http://localhost:8080/mbu/api/all`
+`GET http://localhost:7007/mbu/api/all`
 
 *Response:*
 
