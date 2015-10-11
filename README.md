@@ -1,5 +1,5 @@
 # MBU [![Build Status](https://travis-ci.org/julianespinel/mbu.svg?branch=master)](https://travis-ci.org/julianespinel/mbu)
-MBU (Machine Basic Usage) is a system that exposes basic machine information via HTTP.
+MBU (Machine Basic Usage) is a system that provides basic machine information via HTTP.
 
 With MBU you can get the following information from the machine it is installed on.
 
