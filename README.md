@@ -19,14 +19,6 @@ Execute these steps in you terminal.
 2. `cd mbu`
 3. `./mbu`
 
-### OSX
-
-We'll get there soon.
-
-### Windows
-
-We'll get there soon.
-
 ## Usage
 
 You can access the information provided by MBU directly from your web browser or from an HTTP client.
